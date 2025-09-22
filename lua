@@ -11,11 +11,11 @@ ScreenGui.ResetOnSpawn = false
 ScreenGui.Parent = player:WaitForChild("PlayerGui")
 
 ----------------------------------------------------------------
--- Main Frame (Liit na size)
+-- Main Frame (mas maliit)
 ----------------------------------------------------------------
 local Frame = Instance.new("Frame")
-Frame.Size = UDim2.new(0, 280, 0, 180) -- liit na
-Frame.Position = UDim2.new(0.5, -140, 0.5, -90)
+Frame.Size = UDim2.new(0, 240, 0, 160) -- liit na size
+Frame.Position = UDim2.new(0.5, -120, 0.5, -80)
 Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 Frame.BorderSizePixel = 0
 Frame.Parent = ScreenGui
@@ -51,55 +51,66 @@ end)
 -- Title
 ----------------------------------------------------------------
 local Title = Instance.new("TextLabel")
-Title.Size = UDim2.new(1, 0, 0, 30)
+Title.Size = UDim2.new(1, 0, 0, 25)
 Title.BackgroundTransparency = 1
 Title.Text = "Force Robux Donate"
 Title.Font = Enum.Font.GothamBold
-Title.TextSize = 18
+Title.TextSize = 16
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.Parent = Frame
+
+-- Made by (sa ilalim ng Title)
+local MadeBy = Instance.new("TextLabel")
+MadeBy.Size = UDim2.new(1, 0, 0, 12)
+MadeBy.Position = UDim2.new(0, 0, 0, 20)
+MadeBy.BackgroundTransparency = 1
+MadeBy.Text = "Made by MarkOnTop"
+MadeBy.Font = Enum.Font.GothamSemibold
+MadeBy.TextSize = 9
+MadeBy.TextColor3 = Color3.fromRGB(200, 200, 200)
+MadeBy.Parent = Frame
 
 ----------------------------------------------------------------
 -- Username Input
 ----------------------------------------------------------------
 local UsernameBox = Instance.new("TextBox")
-UsernameBox.Size = UDim2.new(1, -30, 0, 35)
-UsernameBox.Position = UDim2.new(0, 15, 0, 40)
+UsernameBox.Size = UDim2.new(1, -20, 0, 28)
+UsernameBox.Position = UDim2.new(0, 10, 0, 40)
 UsernameBox.PlaceholderText = "Enter Target Username"
 UsernameBox.Text = ""
 UsernameBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 UsernameBox.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 UsernameBox.ClearTextOnFocus = false
 UsernameBox.Parent = Frame
-Instance.new("UICorner", UsernameBox).CornerRadius = UDim.new(0, 8)
+Instance.new("UICorner", UsernameBox).CornerRadius = UDim.new(0, 6)
 
 ----------------------------------------------------------------
 -- Robux Amount Input
 ----------------------------------------------------------------
 local AmountBox = Instance.new("TextBox")
-AmountBox.Size = UDim2.new(1, -30, 0, 35)
-AmountBox.Position = UDim2.new(0, 15, 0, 80)
+AmountBox.Size = UDim2.new(1, -20, 0, 28)
+AmountBox.Position = UDim2.new(0, 10, 0, 75)
 AmountBox.PlaceholderText = "Enter Robux Amount"
 AmountBox.Text = ""
 AmountBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 AmountBox.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 AmountBox.ClearTextOnFocus = false
 AmountBox.Parent = Frame
-Instance.new("UICorner", AmountBox).CornerRadius = UDim.new(0, 8)
+Instance.new("UICorner", AmountBox).CornerRadius = UDim.new(0, 6)
 
 ----------------------------------------------------------------
 -- Force Donate Button
 ----------------------------------------------------------------
 local DonateButton = Instance.new("TextButton")
-DonateButton.Size = UDim2.new(1, -30, 0, 40)
-DonateButton.Position = UDim2.new(0, 15, 0, 125)
+DonateButton.Size = UDim2.new(1, -20, 0, 32)
+DonateButton.Position = UDim2.new(0, 10, 0, 112)
 DonateButton.Text = "Force Donate Robux"
-DonateButton.TextSize = 16
+DonateButton.TextSize = 14
 DonateButton.Font = Enum.Font.GothamBold
 DonateButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 DonateButton.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
 DonateButton.Parent = Frame
-Instance.new("UICorner", DonateButton).CornerRadius = UDim.new(0, 8)
+Instance.new("UICorner", DonateButton).CornerRadius = UDim.new(0, 6)
 
 ----------------------------------------------------------------
 -- Button Logic
@@ -121,7 +132,6 @@ DonateButton.MouseButton1Click:Connect(function()
 	end
 
 	if player.PlayerGui:FindFirstChild("UITemplates") and player.PlayerGui.UITemplates:FindFirstChild("donationPopup") then
-		-- Ayusin text para lowercase lahat
 		local donationText = string.lower("YOU DONATED "..formatNumber(robuxAmount).." TO "..targetPlayerName.."!")
 
 		local ScreenGui2 = player.PlayerGui:FindFirstChild("ScreenGui")
